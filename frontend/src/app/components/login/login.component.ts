@@ -35,16 +35,11 @@ export class LoginComponent implements OnInit{
   /*
   //Login user1
   phoneNumber: string = '33445566';
-  password: string = '123456789';
-
-  //Login user2
-  phoneNumber: string = '0964896239';
-  password: string = '123456789';
-
+  password: string = '123456';
 
   //Login admin
   phoneNumber: string = '11223344';
-  password: string = '11223344';
+  password: string = '123456';
 
   */
   phoneNumber: string = '33445566';
@@ -77,7 +72,7 @@ export class LoginComponent implements OnInit{
         debugger
         const roles = apiResponse.data
         this.roles = roles;
-        this.selectedRole = roles.length > 0 ? roles[0] : undefined;
+        this.selectedRole = roles.length > 0 ? roles[1] : undefined;
       },
       complete: () => {
         debugger
@@ -102,7 +97,7 @@ export class LoginComponent implements OnInit{
     const loginDTO: LoginDTO = {
       phone_number: this.phoneNumber,
       password: this.password,
-      role_id: this.selectedRole?.id ?? 1
+      role_id: this.selectedRole?.id ?? 2
     };
     this.userService.login(loginDTO).subscribe({
       next: (apiResponse: ApiResponse) => {
